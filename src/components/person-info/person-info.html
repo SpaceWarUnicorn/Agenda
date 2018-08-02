@@ -1,0 +1,84 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="person-info">
+  <template>
+    <style>
+      :host {
+        display: flex;
+        background: rgba(0, 0,0, 0.4);
+        padding: 6vh 0 0 2vw;
+        font-family: sans-serif;
+        border-radius: 15px;
+        min-height: 50vh;
+        font-family: sans-serif;
+      }
+      h3{
+        font-weight: bold;
+        margin: 0 0 6vh 2vw;
+        font-size: 1.5rem;
+        color: rgba(255,255,255,0.6);
+      }
+      img{
+        max-height: 125px;
+        width: 125px;
+        margin-bottom: 6vh;
+        border-radius: 30px;
+
+      }
+
+      label{
+        margin: 0 0 0 4vw;
+        color: rgba(255,255,255,0.9);
+        font-size: 1.2rem;
+      }
+
+      .info-cont{
+        display: flex;
+        flex-direction: column;
+      }
+
+    </style>
+
+    <img src='src/media/{{imgsrc}}'>
+
+    <div class='info-cont'>
+    <h3>{{name}}</h3>
+
+    <label>{{descript}}</label>
+
+    <div>
+
+  </template>
+
+  <script>
+    /**
+     * `person-info`
+     * person-info
+     *
+     * @customElement
+     * @polymer
+     */
+    class PersonInfo extends Polymer.Element {
+      static get is() { return 'person-info'; }
+      static get properties() {
+        return {
+          name: {
+            type: String,
+            value: 'nombre-default'
+          },
+          descript: {
+            type: String,
+            value: 'descript-default'
+          },
+          imgsrc: {
+            type: String,
+            value: 'default-user-image.png'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(PersonInfo.is, PersonInfo);
+
+  </script>
+</dom-module>

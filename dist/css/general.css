@@ -1,0 +1,14 @@
+html,body{
+  margin:0;
+  width 100%;
+}
+
+body{
+  display: flex;
+}
+#contact{
+  flex: 0 0 auto;
+}
+#info_contact{
+  flex: 1 1 auto
+}

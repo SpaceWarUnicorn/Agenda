@@ -1,13 +1,22 @@
-<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 
 <dom-module id="person-container">
   <template>
     <style>
       :host {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        padding: 3vh 5vw 0 3vw;
+        font-family: sans-serif;
       }
+        h2{
+          font-family: sans-serif;
+          font-weight: bold;
+          margin: 0 0 2vh -1vw;
+        }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <h2>{{mytitle}}</h2>
+    <slot></slot>
   </template>
 
   <script>
@@ -23,9 +32,9 @@
       static get is() { return 'person-container'; }
       static get properties() {
         return {
-          prop1: {
+          mytitle: {
             type: String,
-            value: 'person-container'
+            value: ''
           }
         };
       }

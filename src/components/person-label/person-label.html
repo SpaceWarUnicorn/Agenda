@@ -1,0 +1,64 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+
+<dom-module id="person-label">
+  <template>
+    <style>
+      p:hover {
+        background: rgba(0, 0, 0, 0.4);
+        font-family: sans-serif;
+        border-radius: 9px;
+        border-bottom: solid black 2px;
+        border-left: solid black 2px;
+        cursor: pointer;
+      }
+
+      p{
+        padding: 5px 10px;
+        font-size: 1.3rem;
+      }
+
+    </style>
+
+    <p>{{name}}</p>
+
+  </template>
+
+  <script>
+    /**
+     * `person-label
+     * person-label
+     *
+     * @customElement
+     * @polymer
+     */
+    class PersonLabel extends Polymer.Element {
+      static get is() {
+        return 'person-label';
+      }
+      static get properties() {
+        return {
+          name: {
+            type: String,
+            value: 'nombre-default'
+          }
+        };
+      }
+
+      ready() {
+        super.ready();
+        let user = document.querySelector('person-info');
+        this.addEventListener('click', e => {
+          let name = e.target.getAttribute('name');
+          if(name){
+            user.setAttribute('name', name);
+          }
+          else{
+            user.setAttribute('name', 'user-default');
+          }
+        });
+      }
+    }
+
+    window.customElements.define(PersonLabel.is, PersonLabel);
+  </script>
+</dom-module>
