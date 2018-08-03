@@ -48,12 +48,18 @@
         super.ready();
         let user = document.querySelector('person-info');
         this.addEventListener('click', e => {
-          let name = e.target.getAttribute('name');
+          let name = e.target.getAttribute('name'),
+           imgsrc = e.target.getAttribute('imgsrc'),
+           descript = e.target.getAttribute('descript');
           if(name){
             user.setAttribute('name', name);
+            user.setAttribute('descript', descript);
+            user.setAttribute('imgsrc', imgsrc);
           }
           else{
             user.setAttribute('name', 'user-default');
+            user.setAttribute('descript', 'descript-default');
+            user.setAttribute('imgsrc', 'default-user-image.png');
           }
         });
       }

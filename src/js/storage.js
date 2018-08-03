@@ -5,20 +5,14 @@ export default core = (()=>{
 
     var users =[
 		{
-			name: 'Osva',
-      descript: 'Simplemente Yo!'
+			name: 'Osva Ocampo',
+      descript: 'Simplemente Yo!',
+      imgsrc:'usr_0.jpg'
 		},
     {
-			name: 'Osva',
-      descript: 'Simplemente Yo!'
-		},
-    {
-			name: 'Osva',
-      descript: 'Simplemente Yo!'
-		},
-    {
-			name: 'Osva',
-      descript: 'Simplemente Yo!'
+      name: 'Juan Ángel',
+      descript: 'Cinéfilo, Melómano y Artista de Software. &nbsp; "La vida es un viaje, disfrutalo"',
+      imgsrc:'usr_1.jpg'
 		}
 	]
 

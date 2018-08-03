@@ -19,8 +19,8 @@
         color: rgba(255,255,255,0.6);
       }
       img{
-        max-height: 125px;
-        width: 125px;
+        max-height: 25vw;
+        width: 25vw;
         margin-bottom: 6vh;
         border-radius: 30px;
 
@@ -58,6 +58,8 @@
      * @customElement
      * @polymer
      */
+
+
     class PersonInfo extends Polymer.Element {
       static get is() { return 'person-info'; }
       static get properties() {
@@ -76,6 +78,18 @@
           }
         };
       }
+      // ready() {
+      //   super.ready();
+      //   let users = core.users;
+      //
+      //
+      //   this.addEventListener('click', e => {
+      //   for (let i in users){
+      //     console.log(users[i]);
+      //   }
+      //   });
+      // }
+
     }
 
     window.customElements.define(PersonInfo.is, PersonInfo);
