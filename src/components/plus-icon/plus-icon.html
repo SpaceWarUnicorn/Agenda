@@ -1,0 +1,75 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+
+<dom-module id="plus-icon">
+  <template>
+    <style>
+      :host{
+          display: flex;
+          justify-content: flex-end;
+          padding: 0 2vw 11vh 0;
+      }
+
+      div:hover iron-icon {
+        height: 40px;
+        width: 40px;
+      }
+
+      iron-icon{
+        height: 30px;
+        width: 30px;
+      }
+
+      div{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        width: 40px;
+        background: rgba(0, 150, 255, 1);
+        border-radius: 30px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+
+      div:hover{
+        margin-right: 0px;
+        margin-bottom: 0px;
+        height: 50px;
+        width: 50px;
+      }
+
+
+    </style>
+
+    <div>
+      <iron-icon icon="add"></iron-icon>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `plus-icon
+     * plus-icon
+     *
+     * @customElement
+     * @polymer
+     */
+    class PlusIcon extends Polymer.Element {
+      static get is() {
+        return 'plus-icon';
+      }
+
+
+      ready() {
+        super.ready();
+        let personCard = document.querySelector('person-info');
+        this.addEventListener('click', e => {
+          personCard.classList.add('toggle');
+        });
+      }
+    }
+
+    window.customElements.define(PlusIcon.is, PlusIcon);
+  </script>
+</dom-module>

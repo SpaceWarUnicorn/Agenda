@@ -4,11 +4,58 @@ html,body{
 }
 
 body{
+  padding-top: 3vh; 
   display: flex;
 }
+
 #contact{
-  flex: 0 0 auto;
+  flex: 1 1 auto;
 }
-#info_contact{
+#info{
   flex: 1 1 auto
+}
+
+.cont{
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 2vw 0 0;
+  min-width: 300px;
+}
+
+.toggle{
+  animation-name: dissappear;
+  animation-duration: 700ms;
+  animation-fill-mode: forwards;
+  display:none;
+}
+
+
+.show{
+  display: flex;
+  animation-name: appear;
+  animation-duration: 2000ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear{
+  100%{
+      opacity: 1;
+  }
+  0%{
+      opacity: 0;
+      display: none;
+  }
+}
+
+@keyframes dissappear{
+  0%{
+      opacity: 1;
+
+  }
+  100%{
+
+      opacity: 0;
+      display: none;
+  }
 }

@@ -8,21 +8,40 @@
   <script src="src/components/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <link href="src/css/general.css" rel="stylesheet">
+
+  <link rel="import" href="src/components/person-add/person-add.html">
   <link rel="import" href="src/components/person-info/person-info.html">
   <link rel="import" href="src/components/person-container/person-container.html">
+  <link rel="import" href="src/components/plus-icon/plus-icon.html">
   <link rel="import" href="src/components/person-label/person-label.html">
 </head>
 
 <body>
 
-  <person-container id='contact' mytitle='Contactos'>
-  </person-container>
+  <div class='cont'>
+    <person-container id='contact' mytitle='Contactos'></person-container>
+
+    <person-container>
+        <plus-icon></plus-icon>
+    </person-container>
+  </div>
+
+    <person-container class = 'show' mytitle="Bienvenid@ a la Agenda" id='bienvenida'>
 
 
-  <person-container id='info_contact' mytitle='Información de Contacto'>
-    <person-info></person-info>
-  </person-container>
-  <script src="/dist/js/general.js" type="module" ></script>
+      <br>
+
+      <h4>  &nbsp Clickeé un nombre para ver su información, o agregué a más usuarios</h3>
+    </person-container>
+
+    <person-container class = 'toggle' id='info' mytitle='Información de Contacto'>
+
+        <person-info class = 'toggle' id='info_contact'></person-info>
+        <person-add class = 'toggle' id='new_contact'></person-add>
+
+    </person-container>
+
+  <script src="/dist/js/general.js" type="module"></script>
 </body>
 
 </html>

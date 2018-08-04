@@ -1,0 +1,205 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+
+
+<dom-module id="person-add">
+  <template>
+    <style>
+      :host {
+        display: flex;
+        margin-top: 6vh;
+        background: rgba(0, 0,0, 0.4);
+        padding: 6vh 2vw 0 4vw;
+        font-family: sans-serif;
+        border-radius: 15px;
+        font-family: sans-serif;
+      }
+
+      img{
+        position: absolute;
+        max-height: 25vw;
+        width: 25vw;
+        border-radius: 30px;
+        z-index: -1;
+      }
+
+      .info-cont{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        flex: 1 1 auto;
+      }
+
+      .info-cont div{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .img-cont{
+        display: flex;
+        height: 25vw;
+        width: 25vw;
+        margin: 0 4vw 6vh 0vw;
+        border-radius: 30px;
+        align-items: flex-end;
+        justify-content: center;
+      }
+
+      .add-cont{
+          display: flex;
+          justify-content: center;
+          animation-name: dissappear;
+          animation-duration: 700ms;
+          animation-fill-mode: forwards;
+          width: 24.8vw;
+          padding: 1vw 0 1vw 0;
+          color: white;
+          border-bottom-left-radius: 30px;
+          border-bottom-right-radius: 30px;
+          background: rgba(0, 0, 0, 0.5);
+          cursor: pointer;
+      }
+
+      .img-cont:hover .add-cont{
+        animation-name: appear;
+        animation-duration: 700ms;
+        animation-fill-mode: forwards;
+      }
+
+      .add-cont label {
+        display: flex;
+        align-items: center;
+        padding-right: 2vw;
+        cursor: pointer;
+      }
+
+      .add-cont iron-icon{
+        height: 30px;
+        width: 20px;
+      }
+
+      input{
+        width: 18vw;
+        background-color: transparent;
+        font-size: 2vw;
+        padding-left: 1vw;
+        margin: 2vw 2vw;
+        border-color: inset red;
+      }
+
+      input:hover{
+        background-color: rgba(255,255,255,0.1);
+      }
+
+      input:focus{
+        outline:none;
+        background-color: rgba(255,255,255,0.1);
+      }
+
+      #btn{
+        font-size: 2vw;
+        font-weight: 550;
+        background: rgba(255,255,255, 0.7);
+        border-radius: 10px;
+        padding: .5vw 2vw;
+        cursor: pointer;
+      }
+
+      #btn:hover{
+        color: white;
+        background: rgba(0,0,0, 0.3);
+      }
+
+      @keyframes appear{
+        100%{
+            opacity: 1;
+        }
+        0%{
+            opacity: 0;
+        }
+      }
+
+      @keyframes dissappear{
+        0%{
+            opacity: 1;
+
+        }
+        100%{
+
+            opacity: 0;
+        }
+      }
+
+    </style>
+
+    <div class='img-cont'>
+      <img src='src/media/{{imgsrc}}'>
+      <div class='add-cont'>
+        <label>Add photo</label>
+        <iron-icon icon="create"></iron-icon>
+      </div>
+
+    </div>
+
+    <div class='info-cont'>
+      <div>
+        <input type="text" id="namePer" placeholder ="{{name}}"></input>
+
+        <input type="text" id="descriptPer" placeholder ="{{descript}}"></input>
+      </div>
+
+      <label id="btn">Crear</label>
+    <div>
+
+  </template>
+
+  <script>
+    /**
+     * `person-add`
+     * person-add
+     *
+     * @customElement
+     * @polymer
+     */
+
+
+    class PersonAdd extends Polymer.Element {
+      static get is() {
+        return 'person-add';
+      }
+      static get properties() {
+        return {
+          name: {
+            type: String,
+            value: 'Nombre'
+          },
+          descript: {
+            type: String,
+            value: 'Descripción'
+          },
+          imgsrc: {
+            type: String,
+            value: 'default-user-image.png'
+          }
+        };
+      }
+      // ready() {
+      //   super.ready();
+      //   let users = core.users;
+      //https://fineuploader.com/demos.html
+      //
+      //   this.addEventListener('click', e => {
+      //   for (let i in users){
+      //     console.log(users[i]);
+      //   }
+      //   });
+      // }
+
+    }
+
+    window.customElements.define(PersonAdd.is, PersonAdd);
+  </script>
+</dom-module>
