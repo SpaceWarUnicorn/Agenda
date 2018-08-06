@@ -5,6 +5,7 @@ import core from '/dist/js/storage.js';
   let users = core.users,
     label = '',
     target,
+    wMsg = document.querySelector('#welcomeMsg'),
     bienvenida = document.querySelector('#bienvenida'),
     info = document.querySelector('#info'),
     infoPerson = document.querySelector('#info_contact'),
@@ -13,14 +14,14 @@ import core from '/dist/js/storage.js';
 
   let contactElement = document.querySelector("#contact");
 
-  for (let i in users) {
+    for (let i in users) {
 
-    label = document.createElement("person-label");
-    label.setAttribute('name', users[i].name);
-    label.setAttribute('descript', users[i].descript);
-    label.setAttribute('imgsrc', users[i].imgsrc);
-    contactElement.appendChild(label);
-  }
+      label = document.createElement("person-label");
+      label.setAttribute('name', users[i].name);
+      label.setAttribute('descript', users[i].descript);
+      label.setAttribute('imgsrc', users[i].imgsrc);
+      contactElement.appendChild(label);
+    }
 
   document.querySelector('.cont').addEventListener('click', (e) => {
     target = e.target;
@@ -32,6 +33,7 @@ import core from '/dist/js/storage.js';
       info.classList.add("show");
 
       if(target.name){
+
         infoPerson.classList.remove("toggle");
         infoPerson.classList.add("show");
 
@@ -50,4 +52,28 @@ import core from '/dist/js/storage.js';
     }
 
   });
+
+  document.addEventListener('newUser', function (e) {
+    let img = e.detail.imgsrc,
+        name = e.detail.name,
+        descript = e.detail.descript;
+
+    users.push(e.detail);
+
+    label = document.createElement("person-label");
+    label.setAttribute('name', name);
+    label.setAttribute('descript', descript);
+    label.setAttribute('imgsrc', img);
+    contactElement.appendChild(label);
+
+    wMsg.innerText = 'Se ha agregado con exito a ' + name;
+
+    bienvenida.classList.remove("toggle");
+    bienvenida.classList.add("show");
+    info.classList.remove("show");
+    info.classList.add("toggle");
+
+    console.log(users);
+  })
+
 })();
