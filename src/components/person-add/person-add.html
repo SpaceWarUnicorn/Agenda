@@ -85,8 +85,8 @@
 
       .text{
         background-color: transparent;
-        font-size: 2vw;
-        width: 18vw;
+        font-size: 1.5vw;
+        width: 22vw;
         padding-left: 1vw;
         margin: 2vw 2vw;
         border-color: inset red;
@@ -99,6 +99,14 @@
       .text:focus{
         outline:none;
         background-color: rgba(255,255,255,0.1);
+      }
+
+      #file{
+        background-color: transparent;
+        font-size: 1.5vw;
+        width: 22vw;
+        padding-left: 1vw;
+        margin: 2vw 2vw;
       }
 
       #imgInput{
@@ -143,21 +151,20 @@
     </style>
       <div id="imgCont" class='img-cont'>
         <img id ='profilePic' src="src/media/default-user-image.png">
-        <div id= 'addImg' class='add-cont'>
-          <label>Add photo</label>
+        <label id= 'addImg'  for="file"class='add-cont'>
+          <label for="file">Add photo</label>
           <iron-icon icon="create"></iron-icon>
-        </div>
-
+        </label>
       </div>
 
       <div class='info-cont'>
         <div id='infoPerson'>
           <input type="text" class="text"id="namePer" placeholder ="Nombre"></input>
+          <input type="text" class="text"id="lastnamePer" placeholder ="Apellido"></input>
           <input type="text" class="text"id="descriptPer" placeholder ="Descripción"></input>
         </div>
         <div id='imgInput'>
-          <input type="file" accept=".jpg, .jpeg, .png"  id="imgIn" placeholder ="ejemplo.jpg"></input>
-          <label class='btn' id='imgBtn'>Subir</label>
+          <input type="file" accept=".jpg, .jpeg, .png"  id="file" placeholder ="ejemplo.jpg"></input>
         </div>
         <div>
           <label class = 'btn' id="dataBtn">Agregar Contacto</label>
@@ -185,18 +192,18 @@
 
       ready() {
         super.ready();
-        let name, descript, imgsrc, newImage;
+        let name, lastname, descript, imgsrc, newImage;
         const person = this.$.infoPerson,
               img = this.$.imgInput,
               reader = new FileReader();
 
-        this.$.addImg.addEventListener('click', e => {
-          person.style.display = 'none';
-          img.style.display = 'flex';
-        });
+        // this.$.addImg.addEventListener('click', e => {
+        //   person.style.display = 'none';
+        //   img.style.display = 'flex';
+        // });
 
-        this.$.imgBtn.addEventListener('click', e => {
-          newImage = this.$.imgIn.files[0];
+        this.$.file.addEventListener('change', e => {
+          newImage = this.$.file.files[0];
 
 
           if(newImage){
@@ -221,13 +228,14 @@
 
         this.$.dataBtn.addEventListener('click', e => {
             name = this.$.namePer.value;
+            lastname = this.$.lastnamePer.value;
             descript = this.$.descriptPer.value;
 
-            if(name && descript && imgsrc){
+            if(name && descript && imgsrc && lastname){
 
               this.dispatchEvent(new CustomEvent('newUser', {
                 bubbles: true,
-                detail: {name, descript, imgsrc}
+                detail: {name, descript, lastname, imgsrc}
               }));
             }
             else{

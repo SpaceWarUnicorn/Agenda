@@ -19,6 +19,7 @@ import newImg from '/dist/js/uploadImg.js';
 
       label = document.createElement("person-label");
       label.setAttribute('name', users[i].name);
+      label.setAttribute('lastname', users[i].lastname);
       label.setAttribute('descript', users[i].descript);
       label.setAttribute('imgsrc', users[i].imgsrc);
       contactElement.appendChild(label);
@@ -57,12 +58,14 @@ import newImg from '/dist/js/uploadImg.js';
   document.addEventListener('newUser', function (e) {
     let img = e.detail.imgsrc,
         name = e.detail.name,
+        lastname = e.detail.lastname,
         descript = e.detail.descript;
 
     users.push(e.detail);
 
     label = document.createElement("person-label");
     label.setAttribute('name', name);
+    label.setAttribute('lastname', lastname);
     label.setAttribute('descript', descript);
     label.setAttribute('imgsrc', img);
     contactElement.appendChild(label);

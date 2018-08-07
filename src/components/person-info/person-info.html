@@ -45,7 +45,7 @@
     <img src='{{imgsrc}}'>
 
     <div class='info-cont'>
-    <h3>{{name}}</h3>
+    <h3>{{fullname}}</h3>
 
     <label>{{descript}} {{addNew}}</label>
 
@@ -71,6 +71,14 @@
             type: String,
             value: 'nombre-default'
           },
+          lastname:{
+            type: String,
+            value: 'apellido-default'
+          },
+          fullname:{
+            type: String,
+            computed: 'computeFullname(name, lastname)'
+          },
           descript: {
             type: String,
             value: 'descript-default'
@@ -80,6 +88,10 @@
             value: 'src/media/default-user-image.png'
           }
         };
+      }
+
+      computeFullname(first, last){
+        return first + ' ' + last
       }
       // ready() {
       //   super.ready();

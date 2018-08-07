@@ -20,7 +20,7 @@
 
     </style>
 
-    <p>{{name}}</p>
+    <p>{{fullname}}</p>
 
   </template>
 
@@ -41,26 +41,48 @@
           name: {
             type: String,
             value: 'nombre-default'
-          }
+          },
+          lastname:{
+            type: String,
+            value: 'apellido-default'
+          },
+          fullname:{
+            type: String,
+            computed: 'computeFullname(name, lastname)'
+          },
+          descript: {
+              type: String,
+              value: 'descript-default'
+            },
+            imgsrc: {
+              type: String,
+              value: 'src/media/default-user-image.png'
+            }
         };
+      }
+
+      computeFullname(first, last){
+        return first + ' ' + last
       }
 
       ready() {
         super.ready();
         let user = document.querySelector('person-info');
         this.addEventListener('click', e => {
-          let name = e.target.getAttribute('name'),
-           imgsrc = e.target.getAttribute('imgsrc'),
-           descript = e.target.getAttribute('descript');
+          let name = this.name,
+              lastname = this.lastname,
+              imgsrc = this.imgsrc,
+              descript = this.descript;
           if(name){
             user.setAttribute('name', name);
+            user.setAttribute('lastname', lastname);
             user.setAttribute('descript', descript);
             user.setAttribute('imgsrc', imgsrc);
           }
           else{
             user.setAttribute('name', 'user-default');
             user.setAttribute('descript', 'descript-default');
-            user.setAttribute('imgsrc', 'default-user-image.png');
+            user.setAttribute('imgsrc', 'src/media/default-user-image.png');
           }
         });
       }
