@@ -83,8 +83,7 @@
         width: 20px;
       }
 
-      input{
-
+      .text{
         background-color: transparent;
         font-size: 2vw;
         width: 18vw;
@@ -93,11 +92,11 @@
         border-color: inset red;
       }
 
-      input:hover{
+      .text:hover{
         background-color: rgba(255,255,255,0.1);
       }
 
-      input:focus{
+      .text:focus{
         outline:none;
         background-color: rgba(255,255,255,0.1);
       }
@@ -143,7 +142,7 @@
 
     </style>
       <div id="imgCont" class='img-cont'>
-        <img id ='profilePic' src='src/media/default-user-image.png'>
+        <img id ='profilePic' src="src/media/default-user-image.png">
         <div id= 'addImg' class='add-cont'>
           <label>Add photo</label>
           <iron-icon icon="create"></iron-icon>
@@ -153,11 +152,11 @@
 
       <div class='info-cont'>
         <div id='infoPerson'>
-          <input type="text" id="namePer" placeholder ="Nombre"></input>
-          <input type="text" id="descriptPer" placeholder ="Descripción"></input>
+          <input type="text" class="text"id="namePer" placeholder ="Nombre"></input>
+          <input type="text" class="text"id="descriptPer" placeholder ="Descripción"></input>
         </div>
         <div id='imgInput'>
-          <input type="text" id="imgIn" placeholder ="ejemplo.jpg"></input>
+          <input type="file" accept=".jpg, .jpeg, .png"  id="imgIn" placeholder ="ejemplo.jpg"></input>
           <label class='btn' id='imgBtn'>Subir</label>
         </div>
         <div>
@@ -186,22 +185,34 @@
 
       ready() {
         super.ready();
-        let name, descript,imgsrc;
+        let name, descript, imgsrc, newImage;
         const person = this.$.infoPerson,
-              img = this.$.imgInput;
+              img = this.$.imgInput,
+              reader = new FileReader();
+
         this.$.addImg.addEventListener('click', e => {
           person.style.display = 'none';
           img.style.display = 'flex';
         });
 
         this.$.imgBtn.addEventListener('click', e => {
-          imgsrc = this.$.imgIn.value;
-          if(imgsrc){
-            person.style.display = 'flex';
-            img.style.display = 'none';
+          newImage = this.$.imgIn.files[0];
 
-            this.$.profilePic.src = "src/media/" + imgsrc ;
 
+          if(newImage){
+            reader.readAsDataURL(newImage);
+
+            reader.onload = () => {
+              imgsrc = reader.result;
+              person.style.display = 'flex';
+              img.style.display = 'none';
+              this.$.profilePic.src = reader.result ;
+
+            };
+
+            reader.onerror = (error) => {
+              console.log('Error: ', error);
+            };
           }
           else {
             console.log('no hay imagen');

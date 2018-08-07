@@ -1,4 +1,5 @@
 import core from '/dist/js/storage.js';
+import newImg from '/dist/js/uploadImg.js';
 
 (() => {
   'use strict';
