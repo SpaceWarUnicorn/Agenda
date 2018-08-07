@@ -16,9 +16,6 @@ export default core = (()=>{
 		}
 	]
 
-  
-
-
 	return{
 		users: users
 	}
