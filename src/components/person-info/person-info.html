@@ -64,18 +64,20 @@
 
 
     class PersonInfo extends Polymer.Element {
-      static get is() { return 'person-info'; }
+      static get is() {
+        return 'person-info';
+      }
       static get properties() {
         return {
           name: {
             type: String,
             value: 'nombre-default'
           },
-          lastname:{
+          lastname: {
             type: String,
             value: 'apellido-default'
           },
-          fullname:{
+          fullname: {
             type: String,
             computed: 'computeFullname(name, lastname)'
           },
@@ -90,14 +92,13 @@
         };
       }
 
-      computeFullname(first, last){
+      computeFullname(first, last) {
         return first + ' ' + last
       }
-      
+
 
     }
 
     window.customElements.define(PersonInfo.is, PersonInfo);
-
   </script>
 </dom-module>
