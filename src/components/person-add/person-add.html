@@ -197,11 +197,6 @@
               img = this.$.imgInput,
               reader = new FileReader();
 
-        // this.$.addImg.addEventListener('click', e => {
-        //   person.style.display = 'none';
-        //   img.style.display = 'flex';
-        // });
-
         this.$.file.addEventListener('change', e => {
           newImage = this.$.file.files[0];
 
@@ -247,6 +242,5 @@
     }
 
     window.customElements.define(PersonAdd.is, PersonAdd);
-      // https://fineuploader.com/demos.html
   </script>
 </dom-module>
